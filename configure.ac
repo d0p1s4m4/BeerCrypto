@@ -1,0 +1,26 @@
+AC_INIT([BeerCrypto], [0.0])
+
+AM_INIT_AUTOMAKE([foreign subdir-objects])
+
+AC_CONFIG_MACRO_DIRS([m4])
+
+AC_LANG(C)
+AC_PROG_CC
+AC_PROG_CPP
+AM_PROG_AR
+AC_PROG_INSTALL
+LT_INIT
+AM_PROG_CC_C_O
+
+AX_CODE_COVERAGE
+
+AC_CHECK_INCLUDES_DEFAULT
+AC_C_CONST
+AC_C_INLINE
+
+AC_CONFIG_FILES([Makefile
+				include/Makefile
+				src/Makefile
+				test/Makefile])
+
+AC_OUTPUT

@@ -1,0 +1,25 @@
+name: Build and Test
+
+on: [push, pull_request]
+
+jobs:
+  test-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: install deps
+        run: |
+          sudo apt update
+          sudo apt install build-essential autoconf-archive lcov libcmocka-dev
+      - name: Build
+        run: |
+          autoreconf -i -f
+          ./configure --enable-code-coverage
+          make
+      - name: Test
+        run: make check
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          gcov: true
+          token: ${{ secrets.CODECOV_TOKEN }}
