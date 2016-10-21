@@ -3,7 +3,7 @@
  * "THE BEER-WARE LICENSE" (Revision 42):
  * <d0p1@yahoo.com> wrote this file. As long as you retain this notice you
  * can do whatever you want with this stuff. If we meet some day, and you think
- * this stuff is worth it, you can buy me a beer in return 				d0p1
+ * this stuff is worth it, you can buy me a beer in return 		d0p1
  * ----------------------------------------------------------------------------
  */
 
@@ -35,8 +35,10 @@ bc_arcfour_ctx_t	*bc_arcfour_init_ctx(void)
 	if (ctx == NULL)
 		return (NULL);
 	ctx->state = (uint8_t *)malloc(sizeof(uint8_t) * 256);
-	if (ctx == NULL)
+	if (ctx == NULL) {
+		free(ctx);
 		return (NULL);
+	}
 	for (idx = 0; idx < 256; idx++)
 	{
 		ctx->state[idx] = idx;
