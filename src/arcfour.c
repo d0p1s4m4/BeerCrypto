@@ -78,6 +78,12 @@ uint8_t	*bc_arcfour_encrypt(bc_arcfour_ctx_t *ctx, uint8_t *data, size_t length)
 	return (result);
 }
 
+void	bc_arcfour_destroy(bc_arcfour_ctx_t *ctx)
+{
+	free(ctx->state);
+	free(ctx);
+}
+
 int main(void)
 {
 	uint8_t *byte;
@@ -90,5 +96,6 @@ int main(void)
 	byte = bc_arcfour_encrypt(ctx, (uint8_t *)"je suis un test\n",16);
 	printf("%s\n", byte);
 	free(byte);
+	bc_arcfour_destroy(ctx);
 	return (0);
 }
