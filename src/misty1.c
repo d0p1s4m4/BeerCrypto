@@ -67,6 +67,112 @@ bc_MISTY1_ctx_t	*bc_MISTY1_init_ctx_init(void)
 	return (ctx);
 }
 
+static uint16_t	bc_MISTY1_fi(uint16_t in, uint16_t key)
+{
+	uint16_t	d9;
+	uint16_t	d7;
+
+	d9 = in >> 7;
+	d7 = in & 0x7F;
+	d9 = S9[d9] ^ d7;
+	d7 = S7[d7] ^ d9;
+	d7 = d7 & 0x7F;
+	d7 = d7 ^ (key >> 9);
+	d9 = d9 ^ (key & 0x1FF);
+	d9 = S9[d9] ^ d7;
+	return ((d7 << 9) | d9);
+}
+
+void bc_MISTY1_key_init(bc_MISTY1_ctx_t *ctx, uint8_t const *key, size_t length)
+{
+	uint8_t idx;
+
+	if (length != 16)
+		return; // TODO: error
+
+	for (idx = 0; idx < 8; idx++)
+	{
+		ctx->ekey[idx] = key[idx*2] * 256 + key[idx*2+1];
+	}
+	
+	for (idx = 0; idx < 8; idx++)
+	{
+		ctx->ekey[idx+8] = bc_MISTY1_fi(ctx->ekey[idx], ctx->ekey[(idx+1)%8]);
+		ctx->ekey[idx+16] = ctx->ekey[idx+8] & 0x1FF;
+		ctx->ekey[idx+24] = ctx->ekey[idx+8] >> 9;
+	}
+}
+
+static uint32_t	bc_MISTY1_fo(bc_MISTY1_ctx_t *ctx, uint32_t in, uint8_t idx)
+{
+	uint16_t	t0;
+	uint16_t	t1;
+
+	t0 = in >> 16;
+	t1 = in & 0xFFFF;
+	t0 = t0 ^ ctx->ekey[idx];
+	t0 = bc_MISTY1_fi(t0, ctx->ekey[(idx+5)%8+8]);
+	t0 = t0 ^ t1;
+	t1 = t1 ^ ctx->ekey[(idx+2)%8];
+	t1 = bc_MISTY1_fi(t1, ctx->ekey[(idx+1)%8+8]);
+	t1 = t1 ^ t0;
+	t0 = t0 ^ ctx->ekey[(idx+7)%8];
+	t0 = bc_MISTY1_fi(t0, ctx->ekey[(idx+3)%8+8]);
+	t0 = t0 ^ t1;
+	t1 = t1 ^ ctx->ekey[(idx+4)%8];
+	return ((t1 << 16) | t0);
+}
+
+static uint32_t	bc_MISTY1_fl(bc_MISTY1_ctx_t *ctx, uint32_t in, uint8_t idx)
+{
+	uint16_t	d0;
+	uint16_t	d1;
+
+	d0 = in >> 16;
+	d1 = in & 0xffff;
+	if ((idx % 2)== 0)
+	{
+		d1 = d1 ^ (d0 & ctx->ekey[idx/2]);
+		d0 = d0 ^ (d1 | ctx->ekey[(idx/2+6)%8+8]);
+	}
+	else
+	{
+		d1 = d1 ^ (d0 & ctx->ekey[((idx-1)/2+2)%8+8]);
+		d0 = d0 ^ (d1 | ctx->ekey[((idx-1)/2+4)%8]);
+	}
+	return ((d0 << 16) | d1);
+}
+
+static uint32_t bc_MISTY1_invert_fl(bc_MISTY1_ctx_t *ctx, uint32_t in, uint8_t idx)
+{
+	uint16_t	d0;
+	uint16_t	d1;
+
+	d0 = in >> 16;
+	d1 = in & 0xFFFF;
+	if ((idx % 2) == 0)
+	{
+		d0 = d0 ^ (d1 | ctx->ekey[(idx/2+6)%8+8]);
+		d1 = d1 ^ (d0 & ctx->ekey[idx/2]);
+	}
+	else
+	{
+		d0 = d0 ^ (d1 | ctx->ekey[((idx-1)/2+4)%8]);
+		d1 = d1 ^ (d0 & ctx->ekey[((idx-1)/2+2)%8+8]);
+	}
+	return ((d0 << 16) | d1);
+}
+
+uint8_t	*bc_MISTY1_encrypt(bc_MISTY1_ctx_t *ctx, uint8_t *data, size_t length)
+{
+	return (NULL);
+}
+
+uint8_t *bc_MISTY1_decrypt(bc_MISTY1_ctx_t *ctx, uint8_t *data, size_t length)
+{
+	return (NULL);
+}
+
 void bc_MISTY1_ctx_destroy(bc_MISTY1_ctx_t *ctx)
 {
 	free(ctx->ekey);
