@@ -226,10 +226,53 @@ uint8_t	*bc_MISTY1_encrypt(bc_MISTY1_ctx_t *ctx, uint8_t *data, size_t length)
 uint8_t *bc_MISTY1_decrypt(bc_MISTY1_ctx_t *ctx, uint8_t *data, size_t length)
 {
 	uint8_t	*result;
+	uint32_t d0 = 0;
+	uint32_t d1 = 0;
+	uint8_t idx;
 
 	if (length != 8)
 		return (NULL); /* TODO: invalid block size */
-	return (NULL);
+	result = (uint8_t *)malloc(sizeof(uint8_t) * 8);
+	if (result == NULL)
+		return (NULL);
+	for (idx = 0; idx < 4; idx++)
+	{
+		d1 = d1 << 8;
+		d1 = d1 | data[idx];
+		d0 = d0 << 8;
+		d0 = d0 | data[idx+4];
+	}
+	/* round 8 */
+	d0 = bc_MISTY1_invert_fl(ctx, d0, 8);
+	d1 = bc_MISTY1_invert_fl(ctx, d1, 9);
+	/* round 7 */
+	d0 = d0 ^ bc_MISTY1_fo(ctx, d1, 7);
+	/* round 6 */
+	d1 = d1 ^ bc_MISTY1_fo(ctx, d0, 6);
+	d0 = bc_MISTY1_invert_fl(ctx, d0, 6);
+	d1 = bc_MISTY1_invert_fl(ctx, d1, 7);
+	/* round 5 */
+	d0 = d0 ^ bc_MISTY1_fo(ctx, d1, 5);
+	/* round 4 */
+	d1 = d1 ^ bc_MISTY1_fo(ctx, d0, 4);
+	d0 = bc_MISTY1_invert_fl(ctx, d0, 4);
+	d1 = bc_MISTY1_invert_fl(ctx, d1, 5);
+	/* round 3 */
+	d0 = d0 ^ bc_MISTY1_fo(ctx, d1, 3);
+	/* round 2 */
+	d1 = d1 ^ bc_MISTY1_fo(ctx, d0, 2);
+	d0 = bc_MISTY1_invert_fl(ctx, d0, 2);
+	d1 = bc_MISTY1_invert_fl(ctx, d1, 3);
+	/* round 1 */
+	d0 = d0 ^ bc_MISTY1_fo(ctx, d1, 1);
+	/* round 0 */
+	d1 = d1 ^ bc_MISTY1_fo(ctx, d0, 0);
+	d0 = bc_MISTY1_invert_fl(ctx, d0, 0);
+	d1 = bc_MISTY1_invert_fl(ctx, d1, 1);
+
+	bc_uint32_to_bytes(result, d0);
+	bc_uint32_to_bytes(result + 4, d1);
+	return (result);
 }
 
 void bc_MISTY1_ctx_destroy(bc_MISTY1_ctx_t *ctx)

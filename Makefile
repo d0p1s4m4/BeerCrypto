@@ -15,7 +15,8 @@ NAME	= beercrypto
 STATIC	= lib$(NAME).a
 DYNAMIC	= lib$(NAME).so
 
-SRCS	= arcfour.c
+SRCS	= arcfour.c \
+	  misty1.c
 OBJS	= $(addprefix src/, $(SRCS:.c=.o))
 
 # ==============================================================================

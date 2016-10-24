@@ -3,4 +3,5 @@
 ## Unsafe algorithm
 
 * Arcfour
+* MISTY1
 
