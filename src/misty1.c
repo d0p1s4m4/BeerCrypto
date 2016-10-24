@@ -94,7 +94,7 @@ void bc_MISTY1_key_init(bc_MISTY1_ctx_t *ctx, uint8_t const *key, size_t length)
 	{
 		ctx->ekey[idx] = key[idx*2] * 256 + key[idx*2+1];
 	}
-	
+
 	for (idx = 0; idx < 8; idx++)
 	{
 		ctx->ekey[idx+8] = bc_MISTY1_fi(ctx->ekey[idx], ctx->ekey[(idx+1)%8]);
@@ -163,13 +163,72 @@ static uint32_t bc_MISTY1_invert_fl(bc_MISTY1_ctx_t *ctx, uint32_t in, uint8_t i
 	return ((d0 << 16) | d1);
 }
 
+static void	bc_uint32_to_bytes(uint8_t *bytes, uint32_t ui32)
+{
+	bytes[0] = (ui32 >> 24) & 0xFF;
+	bytes[1] = (ui32 >> 16) & 0xFF;
+	bytes[2] = (ui32 >> 8) & 0xFF;
+	bytes[3] = ui32 & 0xFF;
+}
+
 uint8_t	*bc_MISTY1_encrypt(bc_MISTY1_ctx_t *ctx, uint8_t *data, size_t length)
 {
-	return (NULL);
+	uint8_t	*result;
+	uint32_t d0 = 0;
+	uint32_t d1 = 0;
+	uint8_t idx;
+
+	if (length != 8)
+		return (NULL); /* TODO: error invalid block size */
+	result = (uint8_t *)malloc(sizeof(uint8_t) * 8);
+	if (result == NULL)
+		return (NULL);
+	for (idx = 0; idx < 4; idx++)
+	{
+		d0 = d0 << 8;
+		d0 = d0 | data[idx];
+		d1 = d1 << 8;
+		d1 = d1 | data[idx+4];
+	}
+	/* round 0 */
+	d0 = bc_MISTY1_fl(ctx, d0, 0);
+	d1 = bc_MISTY1_fl(ctx, d1, 1);
+	d1 = d1 ^ bc_MISTY1_fo(ctx, d0, 0);
+	/* round 1 */
+	d0 = d0 ^ bc_MISTY1_fo(ctx, d1, 1);
+	/* round 2 */
+	d0 = bc_MISTY1_fl(ctx, d0, 2);
+	d1 = bc_MISTY1_fl(ctx, d1, 3);
+	d1 = d1 ^ bc_MISTY1_fo(ctx, d0, 2);
+	/* round 3 */
+	d0 = d0 ^ bc_MISTY1_fo(ctx, d1, 3);
+	/* round 4 */
+	d0 = bc_MISTY1_fl(ctx, d0, 4);
+	d1 = bc_MISTY1_fl(ctx, d1, 5);
+	d1 = d1 ^ bc_MISTY1_fo(ctx, d0, 4);
+	/* round 5 */
+	d0 = d0 ^ bc_MISTY1_fo(ctx, d1, 5);
+	/* round 6 */
+	d0 = bc_MISTY1_fl(ctx, d0, 6);
+	d1 = bc_MISTY1_fl(ctx, d1, 7);
+	d1 = d1 ^ bc_MISTY1_fo(ctx, d0, 6);
+	/* round 7 */
+	d0 = d0 ^ bc_MISTY1_fo(ctx, d1, 7);
+	/* end round */
+	d0 = bc_MISTY1_fl(ctx, d0, 8);
+	d1 = bc_MISTY1_fl(ctx, d1, 9);
+
+	bc_uint32_to_bytes(result, d1);
+	bc_uint32_to_bytes(result + 4, d0);
+	return (result);
 }
 
 uint8_t *bc_MISTY1_decrypt(bc_MISTY1_ctx_t *ctx, uint8_t *data, size_t length)
 {
+	uint8_t	*result;
+
+	if (length != 8)
+		return (NULL); /* TODO: invalid block size */
 	return (NULL);
 }
 
