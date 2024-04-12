@@ -25,9 +25,7 @@
 var NAVTREE =
 [
   [ "BeerCrypto", "index.html", [
-    [ "BeerCrypto", "d5/d74/md__2github_2workspace_2README.html", [
-      [ "License", "d5/d74/md__2github_2workspace_2README.html#autotoc_md1", null ]
-    ] ],
+    [ "License", "index.html#autotoc_md1", null ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -51,7 +49,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"LICENSE.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

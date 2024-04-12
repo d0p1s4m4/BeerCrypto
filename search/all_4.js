@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['license_0',['License',['../d5/d74/md__2github_2workspace_2README.html#autotoc_md1',1,'']]]
+  ['license_0',['license',['../LICENSE.html',1,'(Global Namespace)'],['../index.html#autotoc_md1',1,'License']]],
+  ['license_2ebsd3_1',['LICENSE.BSD3',['../LICENSE_8BSD3.html',1,'']]]
 ];

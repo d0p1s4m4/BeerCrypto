@@ -1,4 +1,4 @@
 var topics =
 [
-    [ "Unsafe", "d0/dba/group__unsafe.html", "d0/dba/group__unsafe" ]
+    [ "Unsafe", "group__unsafe.html", "group__unsafe" ]
 ];
