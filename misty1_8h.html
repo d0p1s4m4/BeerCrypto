@@ -97,15 +97,18 @@ $(document).ready(function(){initNavTree('misty1_8h.html',''); initResizable(); 
   <div class="headertitle"><div class="title">misty1.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for misty1.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="misty1_8h__incl.png" border="0" usemap="#abeercrypto_2unsafe_2misty1_8h" alt=""/></div>
 <map name="abeercrypto_2unsafe_2misty1_8h" id="abeercrypto_2unsafe_2misty1_8h">
 <area shape="rect" title=" " alt="" coords="5,5,182,31"/>
-<area shape="rect" title=" " alt="" coords="62,79,125,105"/>
-<area shape="poly" title=" " alt="" coords="96,31,96,63,91,63,91,31"/>
+<area shape="rect" title=" " alt="" coords="16,79,83,105"/>
+<area shape="poly" title=" " alt="" coords="89,33,67,67,63,64,84,30"/>
+<area shape="rect" title=" " alt="" coords="107,79,171,105"/>
+<area shape="poly" title=" " alt="" coords="103,30,125,64,121,67,99,33"/>
 </map>
 </div>
 </div>
@@ -120,19 +123,29 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:gaf5ce23851bb1427160c58a71944571e4" id="r_gaf5ce23851bb1427160c58a71944571e4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#gaf5ce23851bb1427160c58a71944571e4">BC_MISTY1_KEY_BYTES</a>&#160;&#160;&#160;16</td></tr>
 <tr class="separator:gaf5ce23851bb1427160c58a71944571e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga584f7c80e0a5e357d52759bb90e6a3c3" id="r_ga584f7c80e0a5e357d52759bb90e6a3c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#ga584f7c80e0a5e357d52759bb90e6a3c3">BC_MISTY1_BLOCK_BYTES</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ga584f7c80e0a5e357d52759bb90e6a3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gac57609a388de28aabd67989cd78e771a" id="r_gac57609a388de28aabd67989cd78e771a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#gac57609a388de28aabd67989cd78e771a">bc_MISTY1_init</a> (<a class="el" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, const uint8_t *key)</td></tr>
 <tr class="separator:gac57609a388de28aabd67989cd78e771a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga602c399574bbe14435b531085dedd5a5" id="r_ga602c399574bbe14435b531085dedd5a5"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#ga602c399574bbe14435b531085dedd5a5">bc_MISTY1_encrypt_block</a> (<a class="el" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, const uint8_t *in, size_t length, uint8_t *out)</td></tr>
+<tr class="separator:ga602c399574bbe14435b531085dedd5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a1914294a95840d4464e8c0c13901fb" id="r_ga4a1914294a95840d4464e8c0c13901fb"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#ga4a1914294a95840d4464e8c0c13901fb">bc_MISTY1_decrypt_block</a> (<a class="el" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, const uint8_t *in, size_t length, uint8_t *out)</td></tr>
+<tr class="separator:ga4a1914294a95840d4464e8c0c13901fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>MISTY1 Encryption Algorithm <a href="https://datatracker.ietf.org/doc/rfc2994/">https://datatracker.ietf.org/doc/rfc2994/</a> </p>
+
+<p class="definition">Definition in file <a class="el" href="misty1_8h_source.html">misty1.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_a9fc4df316dbbc2ec20eaa7ce861f2ab.html">beercrypto</a></li><li class="navelem"><a class="el" href="dir_a6739586c1a3bba89b52684fb00e66e7.html">unsafe</a></li><li class="navelem"><a class="el" href="misty1_8h.html">misty1.h</a></li>
-    <li class="footer">Generated on Fri Apr 12 2024 21:15:31 for BeerCrypto by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Apr 13 2024 06:52:58 for BeerCrypto by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

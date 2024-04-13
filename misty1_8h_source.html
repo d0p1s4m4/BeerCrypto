@@ -130,28 +130,39 @@ $(document).ready(function(){initNavTree('misty1_8h_source.html',''); initResiza
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#ifndef BEERCRYPTO_UNSAFE_MISTY1_H</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor"># define BEERCRYPTO_UNSAFE_MISTY1_H 1</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor"># include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="group__unsafe.html#gaf5ce23851bb1427160c58a71944571e4">   42</a></span><span class="preprocessor"># define BC_MISTY1_KEY_BYTES 16</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="structBCMISTY1Context.html">   44</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>bc_MISTY1_context {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structBCMISTY1Context.html#ae39eff9778670727319efeca38b199f7">   45</a></span>    uint16_t ekey[32];</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <a class="code hl_struct" href="structBCMISTY1Context.html">BCMISTY1Context</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor"># include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor"># include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="group__unsafe.html#gaf5ce23851bb1427160c58a71944571e4">   43</a></span><span class="preprocessor"># define BC_MISTY1_KEY_BYTES 16</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="group__unsafe.html#ga584f7c80e0a5e357d52759bb90e6a3c3">   45</a></span><span class="preprocessor"># define BC_MISTY1_BLOCK_BYTES 8</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="};">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structBCMISTY1Context.html">   47</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>bc_MISTY1_context {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structBCMISTY1Context.html#ae39eff9778670727319efeca38b199f7">   48</a></span>    uint16_t ekey[32];</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>} <a class="code hl_struct" href="structBCMISTY1Context.html">BCMISTY1Context</a>;</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="group__unsafe.html#gac57609a388de28aabd67989cd78e771a">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__unsafe.html#gac57609a388de28aabd67989cd78e771a">bc_MISTY1_init</a>(<a class="code hl_struct" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, <span class="keyword">const</span> uint8_t *key);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif </span><span class="comment">/* !BEERCRYPTO_UNSAFE_MISTY1_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="group__unsafe.html#gac57609a388de28aabd67989cd78e771a">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__unsafe.html#gac57609a388de28aabd67989cd78e771a">bc_MISTY1_init</a>(<a class="code hl_struct" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, <span class="keyword">const</span> uint8_t *key);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="group__unsafe.html#ga602c399574bbe14435b531085dedd5a5">   57</a></span>uint8_t *<a class="code hl_function" href="group__unsafe.html#ga602c399574bbe14435b531085dedd5a5">bc_MISTY1_encrypt_block</a>(<a class="code hl_struct" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, <span class="keyword">const</span> uint8_t *in,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                                <span class="keywordtype">size_t</span> length, uint8_t *out);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="group__unsafe.html#ga4a1914294a95840d4464e8c0c13901fb">   60</a></span>uint8_t *<a class="code hl_function" href="group__unsafe.html#ga4a1914294a95840d4464e8c0c13901fb">bc_MISTY1_decrypt_block</a>(<a class="code hl_struct" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, <span class="keyword">const</span> uint8_t *in,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                <span class="keywordtype">size_t</span> length, uint8_t *out);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif </span><span class="comment">/* !BEERCRYPTO_UNSAFE_MISTY1_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agroup__unsafe_html_ga4a1914294a95840d4464e8c0c13901fb"><div class="ttname"><a href="group__unsafe.html#ga4a1914294a95840d4464e8c0c13901fb">bc_MISTY1_decrypt_block</a></div><div class="ttdeci">uint8_t * bc_MISTY1_decrypt_block(BCMISTY1Context *ctx, const uint8_t *in, size_t length, uint8_t *out)</div></div>
+<div class="ttc" id="agroup__unsafe_html_ga602c399574bbe14435b531085dedd5a5"><div class="ttname"><a href="group__unsafe.html#ga602c399574bbe14435b531085dedd5a5">bc_MISTY1_encrypt_block</a></div><div class="ttdeci">uint8_t * bc_MISTY1_encrypt_block(BCMISTY1Context *ctx, const uint8_t *in, size_t length, uint8_t *out)</div></div>
 <div class="ttc" id="agroup__unsafe_html_gac57609a388de28aabd67989cd78e771a"><div class="ttname"><a href="group__unsafe.html#gac57609a388de28aabd67989cd78e771a">bc_MISTY1_init</a></div><div class="ttdeci">void bc_MISTY1_init(BCMISTY1Context *ctx, const uint8_t *key)</div></div>
-<div class="ttc" id="astructBCMISTY1Context_html"><div class="ttname"><a href="structBCMISTY1Context.html">BCMISTY1Context</a></div><div class="ttdef"><b>Definition</b> <a href="misty1_8h_source.html#l00044">misty1.h:44</a></div></div>
+<div class="ttc" id="astructBCMISTY1Context_html"><div class="ttname"><a href="structBCMISTY1Context.html">BCMISTY1Context</a></div><div class="ttdef"><b>Definition</b> <a href="misty1_8h_source.html#l00047">misty1.h:47</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_a9fc4df316dbbc2ec20eaa7ce861f2ab.html">beercrypto</a></li><li class="navelem"><a class="el" href="dir_a6739586c1a3bba89b52684fb00e66e7.html">unsafe</a></li><li class="navelem"><a class="el" href="misty1_8h.html">misty1.h</a></li>
-    <li class="footer">Generated on Fri Apr 12 2024 21:15:31 for BeerCrypto by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Apr 13 2024 06:52:58 for BeerCrypto by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

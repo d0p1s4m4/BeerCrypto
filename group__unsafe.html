@@ -111,6 +111,8 @@ Macros</h2></td></tr>
 <tr class="separator:gadee779e1bac1df8cdaf223d8efd1961a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf5ce23851bb1427160c58a71944571e4" id="r_gaf5ce23851bb1427160c58a71944571e4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#gaf5ce23851bb1427160c58a71944571e4">BC_MISTY1_KEY_BYTES</a>&#160;&#160;&#160;16</td></tr>
 <tr class="separator:gaf5ce23851bb1427160c58a71944571e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga584f7c80e0a5e357d52759bb90e6a3c3" id="r_ga584f7c80e0a5e357d52759bb90e6a3c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#ga584f7c80e0a5e357d52759bb90e6a3c3">BC_MISTY1_BLOCK_BYTES</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ga584f7c80e0a5e357d52759bb90e6a3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -120,6 +122,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga68bd2b354f0a9dc394455dfb3ac2aebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac57609a388de28aabd67989cd78e771a" id="r_gac57609a388de28aabd67989cd78e771a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#gac57609a388de28aabd67989cd78e771a">bc_MISTY1_init</a> (<a class="el" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, const uint8_t *key)</td></tr>
 <tr class="separator:gac57609a388de28aabd67989cd78e771a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga602c399574bbe14435b531085dedd5a5" id="r_ga602c399574bbe14435b531085dedd5a5"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#ga602c399574bbe14435b531085dedd5a5">bc_MISTY1_encrypt_block</a> (<a class="el" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, const uint8_t *in, size_t length, uint8_t *out)</td></tr>
+<tr class="separator:ga602c399574bbe14435b531085dedd5a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a1914294a95840d4464e8c0c13901fb" id="r_ga4a1914294a95840d4464e8c0c13901fb"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__unsafe.html#ga4a1914294a95840d4464e8c0c13901fb">bc_MISTY1_decrypt_block</a> (<a class="el" href="structBCMISTY1Context.html">BCMISTY1Context</a> *ctx, const uint8_t *in, size_t length, uint8_t *out)</td></tr>
+<tr class="separator:ga4a1914294a95840d4464e8c0c13901fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -139,6 +145,22 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga584f7c80e0a5e357d52759bb90e6a3c3" name="ga584f7c80e0a5e357d52759bb90e6a3c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga584f7c80e0a5e357d52759bb90e6a3c3">&#9670;&#160;</a></span>BC_MISTY1_BLOCK_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BC_MISTY1_BLOCK_BYTES&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="misty1_8h_source.html#l00045">45</a> of file <a class="el" href="misty1_8h_source.html">misty1.h</a>.</p>
+
+</div>
+</div>
 <a id="gaf5ce23851bb1427160c58a71944571e4" name="gaf5ce23851bb1427160c58a71944571e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf5ce23851bb1427160c58a71944571e4">&#9670;&#160;</a></span>BC_MISTY1_KEY_BYTES</h2>
 
@@ -152,7 +174,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Key length in bytes </p>
 
-<p class="definition">Definition at line <a class="el" href="misty1_8h_source.html#l00042">42</a> of file <a class="el" href="misty1_8h_source.html">misty1.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="misty1_8h_source.html#l00043">43</a> of file <a class="el" href="misty1_8h_source.html">misty1.h</a>.</p>
 
 </div>
 </div>
@@ -250,6 +272,86 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga4a1914294a95840d4464e8c0c13901fb" name="ga4a1914294a95840d4464e8c0c13901fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4a1914294a95840d4464e8c0c13901fb">&#9670;&#160;</a></span>bc_MISTY1_decrypt_block()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * bc_MISTY1_decrypt_block </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBCMISTY1Context.html">BCMISTY1Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ga602c399574bbe14435b531085dedd5a5" name="ga602c399574bbe14435b531085dedd5a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga602c399574bbe14435b531085dedd5a5">&#9670;&#160;</a></span>bc_MISTY1_encrypt_block()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * bc_MISTY1_encrypt_block </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBCMISTY1Context.html">BCMISTY1Context</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="gac57609a388de28aabd67989cd78e771a" name="gac57609a388de28aabd67989cd78e771a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac57609a388de28aabd67989cd78e771a">&#9670;&#160;</a></span>bc_MISTY1_init()</h2>
 
@@ -290,7 +392,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Apr 12 2024 21:15:31 for BeerCrypto by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Sat Apr 13 2024 06:52:58 for BeerCrypto by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
