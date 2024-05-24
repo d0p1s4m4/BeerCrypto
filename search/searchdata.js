@@ -3,10 +3,10 @@ var indexSectionsWithContent =
   0: "abcelmrsuxy",
   1: "b",
   2: "abclmrs",
-  3: "b",
+  3: "br",
   4: "cesxy",
   5: "b",
-  6: "b",
+  6: "br",
   7: "u",
   8: "b"
 };
